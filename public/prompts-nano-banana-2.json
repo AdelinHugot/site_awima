@@ -1,0 +1,56 @@
+{
+  "tool": "Nano Banana 2",
+  "reference_image": "adelin.jpg",
+  "subject_description": "Homme, fin vingtaine, cheveux bruns courts, barbe légère, tatouage d'empreintes de pattes animales (petit, noir, encre fine) sur le poignet/avant-bras droit, allure décontractée-professionnelle",
+  "brand_palette": {
+    "primary_bg": "#0B1B3D",
+    "accent": "#2EDBB4",
+    "text": "#F5F4F0"
+  },
+  "generations": [
+    {
+      "id": "hero",
+      "output_filename": "adelin-hero.jpg",
+      "usage": "Section Hero — colonne droite, portrait demi-corps",
+      "prompt": "Candid editorial photo of a young man in his late twenties, dark short hair, light stubble, sitting at a wooden desk in a bright open co-working space with large windows and plants in the background. He is looking slightly down and to the left at his MacBook Pro screen, focused and relaxed, not looking at the camera. Dark grey crewneck sweater. On his right wrist and forearm, a small black tattoo of animal paw prints — small, delicate, realistic ink. Shallow depth of field, background figures softly blurred. Shot on 35mm f/1.8, warm natural window light, cinematic color grading, editorial lifestyle photography. Highly realistic, photojournalistic feel. No posing, no stiffness.",
+      "negative_prompt": "looking at camera, direct eye contact, stiff pose, studio backdrop, shamrock tattoo, clover tattoo, large tattoo, different tattoo, suit, tie, heavy Photoshop, HDR, oversaturated, cartoon, illustration, different person",
+      "aspect_ratio": "3:4",
+      "style": "editorial lifestyle, 35mm f/1.8, natural window light, cinematic",
+      "look_direction": "off-camera, looking at laptop screen",
+      "identity_weight": 0.93,
+      "seed": 42
+    },
+    {
+      "id": "about",
+      "output_filename": "adelin-about.jpg",
+      "usage": "Section Qui je suis — colonne gauche, portrait décontracté",
+      "prompt": "Candid lifestyle photo of a young man in his late twenties, dark short hair, light stubble, laughing or smiling at something happening off-frame to his right — not looking at the camera. Seated at a café table or standing near a window in a bright modern space. Casual outfit — plain dark t-shirt or light overshirt. On his right wrist and forearm, a small black tattoo of animal paw prints, clearly visible. Natural daylight, warm bokeh background, cinematic depth of field. Shot on 50mm f/1.4, grain-free, editorial documentary style. The image feels genuine, spontaneous, human — a moment caught, not staged.",
+      "negative_prompt": "looking at camera, direct eye contact, posed smile, fake expression, studio background, shamrock tattoo, clover tattoo, large tattoo, tie, suit, illustration, different person, sunglasses",
+      "aspect_ratio": "3:4",
+      "style": "lifestyle documentary, 50mm f/1.4, warm natural tones, candid",
+      "look_direction": "off-camera, laughing toward right",
+      "identity_weight": 0.93,
+      "seed": 17
+    },
+    {
+      "id": "cta",
+      "output_filename": "adelin-cta.jpg",
+      "usage": "Section CTA — avatar circulaire 72×72px (crop visage)",
+      "prompt": "Close-up portrait of a young man in his late twenties, dark short hair, light stubble, looking slightly to the right of the camera with a relaxed and open expression — a slight natural smile, not a posed grin. Three-quarter face angle, not full frontal. Dark top, minimal background out of focus in deep navy or dark warm tones. Soft Rembrandt lighting on the face. On his right wrist, partially visible, a small black tattoo of animal paw prints. Shot on 85mm f/1.2, high-end portrait photography, film-like color grade, cinematic realism. No heavy retouching, natural skin texture.",
+      "negative_prompt": "looking directly at camera, full frontal face, stiff expression, forced smile, studio flash, shamrock tattoo, clover tattoo, large tattoo, suit, tie, illustration, heavy filters, different person",
+      "aspect_ratio": "1:1",
+      "style": "portrait 85mm f/1.2, Rembrandt light, cinematic film grade",
+      "look_direction": "slightly off-camera, three-quarter angle",
+      "identity_weight": 0.95,
+      "seed": 88
+    }
+  ],
+  "notes": [
+    "Utilise adelin.jpg comme image de référence pour conserver l'identité du sujet.",
+    "Le tatouage est des empreintes de pattes animales (petit format, encre noire fine) sur le poignet/avant-bras droit — NE PAS générer un trèfle ou autre motif.",
+    "Aucune des 3 images ne doit avoir un regard caméra direct.",
+    "Les 3 images doivent former une série cohérente en termes de style photo et de ton.",
+    "Une fois générées, placer les 3 fichiers dans /public/ à la racine du projet.",
+    "Les noms de fichiers (adelin-hero.jpg, adelin-about.jpg, adelin-cta.jpg) sont déjà câblés dans le code."
+  ]
+}

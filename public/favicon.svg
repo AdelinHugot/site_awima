@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Fond navy -->
+  <rect width="32" height="32" rx="8" fill="#091636"/>
+  <!-- Anneau extérieur -->
+  <circle cx="16" cy="16" r="11" fill="none" stroke="rgba(46,219,180,0.45)" stroke-width="1.2"/>
+  <!-- Point teal central -->
+  <circle cx="16" cy="16" r="4.5" fill="#2EDBB4"/>
+</svg>
