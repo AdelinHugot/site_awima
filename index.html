@@ -1,19 +1,543 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AWIMA — Agence Digitale</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Témoignages vidéo pour artisans — Adelin Hugot, AWIMA (Vienne, Lyon, Isère)</title>
+<meta name="description" content="Je filme vos clients satisfaits chez eux, devant votre réalisation. Prise de contact, tournage et montage : vous n'avez rien à gérer. Vienne, région lyonnaise, Nord-Isère.">
+<meta property="og:title" content="Témoignages vidéo pour artisans — AWIMA">
+<meta property="og:description" content="Je filme vos clients contents, chez eux, devant votre travail.">
+<meta property="og:image" content="https://awima.fr/assets/tournage.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23C2410C'/%3E%3Cpath d='M24 18 L46 32 L24 46 Z' fill='%23F5EFE6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+body{margin:0;background:#0D0D0C}
+.v{--bg:#0D0D0C;--bg2:#161614;--fg:#F2EFE9;--mute:#A8A39A;--line:rgba(242,239,233,.16);--rec:#FF4A2E;--ease:cubic-bezier(.77,0,.18,1);--out:cubic-bezier(.16,1,.3,1);background:var(--bg);color:var(--fg);font:400 17px/1.6 Archivo,system-ui,sans-serif;width:100%;overflow-x:clip}
+.v a{color:var(--fg)}
+.w{max-width:1280px;margin:0 auto;padding:0 32px}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.big{font-family:Archivo,sans-serif;font-stretch:125%;font-weight:900;text-transform:uppercase;letter-spacing:-.01em;line-height:.92}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--rec);margin-right:8px;vertical-align:1px;animation:blink 1.4s steps(2) infinite}
+@keyframes blink{50%{opacity:.2}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:1.5px solid var(--fg);cursor:pointer;box-sizing:border-box;transition:background .3s,color .3s,border-color .3s}
+.btn.p{background:var(--fg);color:var(--bg) !important}.btn.p:hover{background:var(--rec);border-color:var(--rec);color:#fff !important}
+.btn.g{color:var(--fg)}.btn.g:hover{background:var(--fg);color:var(--bg) !important}
+.sec{padding:120px 0;border-top:1px solid var(--line)}
+.tag{display:flex;justify-content:space-between;gap:16px;margin-bottom:40px}
+.h2{margin:0;font-size:clamp(40px,6vw,88px)}
+.lead{margin:20px 0 0;max-width:640px;color:var(--mute);font-size:19px}
+
+/* ---------- LOADER ---------- */
+.loader{display:none}
+.anim .loader{display:flex;position:fixed;inset:0;z-index:100;background:var(--bg);flex-direction:column;align-items:center;justify-content:center;gap:28px;transition:transform 1s var(--ease)}
+.anim.ready .loader{transform:translateY(-100%);pointer-events:none}
+.ld-stage{position:relative;width:140px;height:140px}
+.ld-stage svg{position:absolute;inset:0;width:100%;height:100%;opacity:0;stroke:var(--fg);stroke-width:4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.ld-ring{position:absolute;inset:-22px;border:1.5px solid var(--line);border-radius:50%}
+.ld-ring::after{content:"";position:absolute;inset:-1.5px;border-radius:50%;border:1.5px solid transparent;border-top-color:var(--rec);animation:spin 1.1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ic1{animation:ic1 2.7s var(--out) both}
+.ic2{animation:ic2 2.7s var(--out) both}
+.ic3{animation:ic3 2.7s var(--out) both}
+@keyframes ic1{0%{opacity:0;transform:scale(.6)}10%,28%{opacity:1;transform:scale(1)}38%,100%{opacity:0;transform:scale(1.4) rotate(-12deg)}}
+@keyframes ic2{0%,30%{opacity:0;transform:scale(.4) rotate(18deg)}42%,60%{opacity:1;transform:scale(1) rotate(0)}70%,100%{opacity:0;transform:scale(1.5)}}
+@keyframes ic3{0%,62%{opacity:0;transform:scale(.3)}76%,100%{opacity:1;transform:scale(1)}}
+.ic2 .lens{animation:lens 2.7s linear both}
+@keyframes lens{0%,40%{stroke-dasharray:0 100}58%,100%{stroke-dasharray:100 0}}
+.ic3 .tri{fill:var(--rec);stroke:var(--rec)}
+.ld-words{position:relative;height:20px;width:260px;text-align:center}
+.ld-words span{position:absolute;inset:0;opacity:0}
+.ld-words span:nth-child(1){animation:w1 2.7s both}
+.ld-words span:nth-child(2){animation:w2 2.7s both}
+.ld-words span:nth-child(3){animation:w3 2.7s both;color:var(--fg)}
+@keyframes w1{0%{opacity:0;transform:translateY(8px)}10%,28%{opacity:1;transform:none}36%,100%{opacity:0;transform:translateY(-8px)}}
+@keyframes w2{0%,34%{opacity:0;transform:translateY(8px)}44%,60%{opacity:1;transform:none}68%,100%{opacity:0;transform:translateY(-8px)}}
+@keyframes w3{0%,66%{opacity:0;transform:translateY(8px)}76%,100%{opacity:1;transform:none}}
+.ld-bar{width:220px;height:2px;background:var(--line);position:relative;overflow:hidden}
+.ld-bar::after{content:"";position:absolute;inset:0;background:var(--rec);transform-origin:left;animation:bar 2.7s cubic-bezier(.6,0,.2,1) both}
+@keyframes bar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.ld-tc{position:absolute;bottom:28px;left:32px;right:32px;display:flex;justify-content:space-between}
+
+/* ---------- HEADER ---------- */
+.hd{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:22px 32px}
+.hd .id{display:flex;align-items:center;gap:14px;text-decoration:none}
+.hd .id img{width:44px;height:44px;object-fit:cover;filter:grayscale(1)}
+.hd .id b{display:block;font-stretch:115%;font-weight:800;text-transform:uppercase;letter-spacing:.02em;font-size:15px;line-height:1.2}
+.hd nav{display:flex;flex-wrap:wrap;align-items:center;gap:24px}
+.hd nav a.l{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--mute)}
+.hd nav a.l:hover{color:var(--fg)}
+.hd .btn{min-height:44px;padding:0 18px;font-size:12px}
+.anim .hd{opacity:0;transform:translateY(-12px);transition:opacity .8s .9s,transform .8s .9s var(--out)}
+.anim.ready .hd{opacity:1;transform:none}
+
+/* ---------- HERO ---------- */
+.hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:40px 64px;align-items:center;padding:24px 32px 96px;min-height:calc(100vh - 110px);box-sizing:border-box}
+.hero .hl{min-width:0}
+.hero .hi{margin:0 0 18px;color:var(--rec)}
+.hero h1{margin:0;font-size:clamp(40px,5vw,80px);font-stretch:115%}
+.hero h1 em{font-style:normal;color:var(--rec)}
+.ln{display:block;overflow:hidden;padding-bottom:.04em}
+.ln>span{display:block}
+.anim .ln>span{transform:translateY(110%);transition:transform 1.1s var(--out)}
+.anim.ready .ln>span{transform:none}
+.anim.ready .ln:nth-child(1)>span{transition-delay:.35s}
+.anim.ready .ln:nth-child(2)>span{transition-delay:.5s}
+.anim .hero .hi,.anim .hero .side{opacity:0;transform:translateY(20px);transition:opacity .9s,transform .9s var(--out)}
+.anim.ready .hero .hi{opacity:1;transform:none;transition-delay:.2s}
+.anim.ready .hero .side{opacity:1;transform:none;transition-delay:1.05s}
+.hrow{display:flex;flex-wrap:wrap;gap:40px 56px;align-items:flex-end;margin-top:48px}
+.vf{min-width:0;position:relative;overflow:hidden;align-self:center}
+.vf img{display:block;width:100%;aspect-ratio:4/5;max-height:76vh;object-fit:cover}
+.anim .vf{clip-path:inset(50% 50% 50% 50%);transition:clip-path 1.4s var(--ease) .75s}
+.anim.ready .vf{clip-path:inset(0)}
+.anim .vf img{transform:scale(1.25);filter:brightness(.4);transition:transform 2.2s var(--out) .75s,filter 1.6s .9s}
+.anim.ready .vf img{transform:scale(1);filter:none}
+.vf .cn{position:absolute;width:36px;height:36px;border:0 solid var(--fg);pointer-events:none;transition:transform 1s var(--out) 1.6s}
+.vf .t1{top:14px;left:14px;border-width:2px 0 0 2px}.vf .t2{top:14px;right:14px;border-width:2px 2px 0 0}
+.vf .t3{bottom:14px;left:14px;border-width:0 0 2px 2px}.vf .t4{bottom:14px;right:14px;border-width:0 2px 2px 0}
+.anim .vf .t1{transform:translate(-60px,-60px)}.anim .vf .t2{transform:translate(60px,-60px)}.anim .vf .t3{transform:translate(-60px,60px)}.anim .vf .t4{transform:translate(60px,60px)}
+.anim.ready .vf .cn{transform:none}
+.vf .os{position:absolute;top:24px;left:64px;right:64px;display:flex;justify-content:space-between;color:var(--fg);text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.hero .side{min-width:0;margin-top:32px;max-width:560px}
+.hero .sub{margin:0;font-size:18px;color:var(--mute)}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+
+/* ---------- REVEALS (scroll) ---------- */
+.anim [data-r]{transition:opacity 1s var(--out),transform 1.2s var(--out),clip-path 1.3s var(--ease),filter 1.4s var(--out)}
+.anim [data-r="up"]{opacity:0;transform:translateY(70px)}
+.anim [data-r="mask"]{clip-path:inset(0 0 100% 0);transform:translateY(40px)}
+.anim [data-r="dev"]{filter:grayscale(1) blur(14px) brightness(.5);transform:scale(1.06);clip-path:inset(0 100% 0 0)}
+.anim [data-r="sub"]{clip-path:inset(0 100% 0 0)}
+.anim [data-r="rise"]>*{opacity:0;transform:translateY(90px) rotate(2deg);transition:opacity 1s var(--out),transform 1.2s var(--out)}
+.anim [data-r].in{opacity:1;transform:none;clip-path:inset(0);filter:none}
+.anim [data-r="rise"].in>*{opacity:1;transform:none}
+.anim [data-r="rise"].in>*:nth-child(2){transition-delay:.15s}
+.anim [data-r="rise"].in>*:nth-child(3){transition-delay:.3s}
+.anim [data-r="rise"].in>*:nth-child(4){transition-delay:.45s}
+.anim [data-r="sub"].in{transition-delay:.4s}
+
+/* ---------- FILM ---------- */
+.film{background:var(--bg2);padding:28px 0;position:relative}
+.film::before,.film::after{content:"";position:absolute;left:0;right:0;height:14px;background:repeating-linear-gradient(90deg,transparent 0 14px,var(--bg) 14px 30px)}
+.film::before{top:8px}.film::after{bottom:8px}
+.anim .film::before{animation:sprock 3s linear infinite}
+.anim .film::after{animation:sprock 3s linear infinite reverse}
+@keyframes sprock{to{background-position:90px 0}}
+.frames{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;padding:28px 0}
+.frames figure{margin:0;overflow:hidden}
+.frames img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover}
+.frames figure:nth-child(2) img{transition-delay:.25s}
+.frames figcaption{display:flex;gap:14px;margin-top:12px;font-size:16px}
+.frames figcaption .mono{color:var(--rec);flex:0 0 auto;padding-top:3px}
+
+/* ---------- VISION (bloquée au scroll) ---------- */
+.vgrid{display:flex;flex-wrap:wrap;gap:56px 80px}
+.vtxt{flex:1 1 460px;min-width:0}
+.vtxt h2{font-size:clamp(34px,4.4vw,60px);margin:0}
+.vtxt p{color:var(--mute);font-size:18px;margin:22px 0 0}
+.vtxt p strong{color:var(--fg);font-weight:600}
+.meters{flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:26px;padding-top:8px}
+.m .row{display:flex;justify-content:space-between;gap:16px;margin-bottom:8px}
+.m .row b{font-weight:600;font-size:17px}
+.m .track{background:repeating-linear-gradient(90deg,rgba(242,239,233,.12) 0 10px,transparent 10px 14px)}
+.m .lvl{height:26px;background:repeating-linear-gradient(90deg,var(--fg) 0 10px,transparent 10px 14px)}
+.m.hot .lvl{height:40px;background:repeating-linear-gradient(90deg,var(--rec) 0 10px,transparent 10px 14px)}
+.m.hot .row b{color:var(--rec);font-size:20px}
+.meters .note{margin:4px 0 0;color:var(--mute);font-size:15px}
+.pull{margin:96px 0 0;font-size:clamp(30px,4.6vw,64px)}
+.pull span{color:var(--rec)}
+.fill{background:linear-gradient(90deg,var(--fg) 0 50%,rgba(242,239,233,.16) 50% 100%);background-size:200% 100%;background-position:100% 0;-webkit-background-clip:text;background-clip:text}
+.anim .pin{height:420vh;padding:0;border-top:1px solid var(--line)}
+.anim .stick{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center}
+.anim .stick>.w{width:100%;position:relative;height:78vh}
+.anim .scene{position:absolute;inset:56px 32px 24px;display:flex;flex-direction:column;justify-content:center}
+.anim .sA{--a:clamp(0,(var(--p,0) - .02)*3.6,1);opacity:calc(1 - clamp(0,(var(--p,0) - .34)*10,1));transform:translateY(calc(clamp(0,(var(--p,0) - .34)*10,1)*-60px))}
+.anim .sA .fill{color:transparent;background-position:calc(100% - var(--a)*100%) 0}
+.anim .sA p{opacity:clamp(0,(var(--p,0) - .2)*8,1)}
+.anim .sB{opacity:calc(clamp(0,(var(--p,0) - .38)*10,1) - clamp(0,(var(--p,0) - .68)*10,1));transform:translateY(calc((1 - clamp(0,(var(--p,0) - .38)*10,1))*60px))}
+.anim .sB .meters{max-width:860px;width:100%;margin:0 auto}
+.anim .sB .m1 .lvl{width:calc(clamp(0,(var(--p,0) - .42)*8,1)*12%) !important}
+.anim .sB .m2 .lvl{width:calc(clamp(0,(var(--p,0) - .48)*7,1)*34%) !important}
+.anim .sB .m3 .lvl{width:calc(clamp(0,(var(--p,0) - .54)*8,1)*100%) !important}
+.anim .sB .m3{filter:drop-shadow(0 0 calc(clamp(0,(var(--p,0) - .6)*12,1)*24px) rgba(255,74,46,.6))}
+.anim .sC{opacity:clamp(0,(var(--p,0) - .72)*10,1);transform:scale(calc(.82 + clamp(0,(var(--p,0) - .72)*4,1)*.18))}
+.anim .sC .pull{margin:0;text-align:center;font-size:clamp(34px,6vw,96px)}
+.anim .pin .tag{position:absolute;top:0;left:32px;right:32px}
+.anim .pin .prog{position:absolute;bottom:0;left:32px;right:32px;height:2px;background:var(--line)}
+.anim .pin .prog::after{content:"";position:absolute;inset:0;background:var(--rec);transform-origin:left;transform:scaleX(var(--p,0))}
+.pin .vgrid.split{display:block}
+.prog{display:none}
+.anim .prog{display:block}
+.anim .vgrid{display:block}
+
+/* ---------- VIDÉOS ---------- */
+.vrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;align-items:start}
+.vrow figure{margin:0;position:relative}
+.vrow video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;background:#000}
+.sub-t{display:inline;background:#000;color:#fff;font-weight:600;font-size:20px;line-height:1.5;padding:4px 10px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.vrow .q{margin:18px 0 6px;text-align:center}
+.vrow .who{text-align:center}
+.vside{align-self:center;padding:0 8px}
+.vside .big{font-size:32px;color:var(--rec)}
+.vside p{color:var(--mute);margin:18px 0 0}
+.h3{margin:88px 0 20px;font-size:28px}
+.vsm{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.vsm figure{margin:0}
+.vsm video{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;background:#000}
+.vsm figcaption{margin-top:10px}.vsm figcaption b{color:var(--fg);font-weight:600}
+
+/* ---------- MOI ---------- */
+.moi{display:flex;flex-wrap:wrap;gap:48px 80px;align-items:flex-start}
+.moi .ph{flex:0 1 340px;min-width:240px;position:relative;overflow:hidden}
+.moi .ph img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;filter:grayscale(.2)}
+.moi .ph .mono{position:absolute;left:12px;bottom:12px;color:var(--fg);background:rgba(0,0,0,.55);padding:4px 8px}
+.moi .tx{flex:1 1 480px;min-width:0}
+.moi .tx h2{font-size:clamp(34px,4.4vw,60px);margin:0}
+.moi .tx p{color:var(--mute);font-size:18px;margin:20px 0 0}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:48px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.st{padding:24px 24px 26px 0}
+.st+.st{border-left:1px solid var(--line);padding-left:28px}
+.st .mono{display:block;margin-bottom:14px}
+.st .mono i{font-style:normal;color:var(--rec);margin-right:8px}
+.st b{display:block;font-family:'JetBrains Mono',monospace;font-size:clamp(44px,5vw,72px);font-weight:600;line-height:1;white-space:nowrap;letter-spacing:-.02em}
+.moi .tx p.src{margin:12px 0 0;font-size:11px}
+@media (max-width:700px){.stats{grid-template-columns:minmax(0,1fr)}.st+.st{border-left:0;border-top:1px solid var(--line);padding-left:0}}
+.st b small{font-size:.45em;color:var(--mute);font-weight:400;margin-right:.3em;vertical-align:.35em}
+.sig{margin:32px 0 0;font-size:22px;font-stretch:125%;font-weight:800;text-transform:uppercase}
+
+/* ---------- DÉROULÉ : timeline bloquée ---------- */
+.tl{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0;border-top:1px solid var(--line);position:relative}
+.clip{padding:28px 28px 32px 0;border-right:1px solid var(--line)}
+.clip:last-child{border-right:0}
+.clip .bar{height:10px;background:var(--fg);margin:-1px 0 24px}
+.clip:nth-child(3) .bar{opacity:.6}.clip:nth-child(4) .bar{background:var(--rec)}
+.clip b{display:block;font-size:24px;font-stretch:115%;font-weight:800;text-transform:uppercase;line-height:1.1;margin-top:10px}
+.clip p{color:var(--mute);margin:12px 0 0}
+.head{position:absolute;top:-14px;bottom:0;width:2px;background:var(--rec);left:0;display:none;z-index:2}
+.head::before{content:"";position:absolute;top:0;left:-7px;border:8px solid transparent;border-top:10px solid var(--rec)}
+.anim .steps{height:300vh;padding:0}
+.anim .steps .stick>.w{height:auto}
+.anim .steps .head{display:block;left:calc(var(--p,0)*100%)}
+.anim .steps .clip{opacity:.18;transition:opacity .5s}
+.anim .steps .clip .bar{transform-origin:left;transition:transform .6s var(--out)}
+.anim .steps .clip:not(.on) .bar{transform:scaleX(0)}
+.anim .steps .clip.on{opacity:1}
+.anim .steps .tc{position:absolute;right:32px;top:0;font-size:14px;color:var(--fg)}
+.tc{display:none}.anim .steps .tc{display:block}
+
+/* ---------- TARIFS ---------- */
+.offers{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.of{border:1px solid var(--line);padding:32px;display:flex;flex-direction:column;gap:14px}
+.of .n{font-size:28px;font-stretch:120%;font-weight:900;text-transform:uppercase;line-height:1}
+.of p{margin:0;color:var(--mute)}
+.of .px{margin-top:auto;padding-top:20px;border-top:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:40px;font-weight:600;line-height:1}
+.of .px small{font-size:13px;color:var(--mute);font-weight:400}
+.of.hl{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.of.hl p,.of.hl .px small,.of.hl .mono{color:#4A4741}
+.of.hl .px{border-color:rgba(0,0,0,.2)}
+
+/* ---------- FAQ ---------- */
+.faq details{max-width:900px;border-bottom:1px solid var(--line);padding:24px 0}
+summary{cursor:pointer;list-style:none;display:flex;gap:20px;font-size:21px;font-weight:600}
+summary::-webkit-details-marker{display:none}
+summary .mono{color:var(--rec);padding-top:6px;flex:0 0 auto}
+details p{margin:12px 0 0 52px;color:var(--mute)}
+
+/* ---------- CONTACT ---------- */
+.ct{display:flex;flex-wrap:wrap;gap:56px 80px;align-items:flex-start}
+.ct .l{flex:1 1 440px;min-width:0}
+.ct .l h2{font-size:clamp(36px,5vw,72px);margin:0}
+.ct .l p{color:var(--mute);margin:20px 0 0}
+.ct form{flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:22px}
+.ct label{display:flex;flex-direction:column;gap:8px}
+.ct input,.ct select{min-height:52px;border:0;border-bottom:1.5px solid var(--fg);background:transparent;color:var(--fg);font:18px Archivo,sans-serif;padding:0 2px}
+.ct select option{color:#000}
+.ft{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding:28px 0;border-top:1px solid var(--line)}
+@media (max-width:900px){.hero{grid-template-columns:minmax(0,1fr);min-height:0}.vf img{aspect-ratio:16/11}}
+@media (max-width:700px){.sec{padding:80px 0}.clip{border-right:0;padding-right:0}.vf .os{left:56px;right:56px}.hd nav a.l{display:none}.anim .steps .head{display:none}.anim .steps .clip{opacity:1}.anim .steps .clip .bar{transform:none !important}}
+@media (prefers-reduced-motion:reduce){.dot{animation:none}}
+
+.hp{position:absolute;left:-9999px}
+.msg{margin:0;font-size:15px}.msg.ok{color:#7BD88F}.msg.err{color:#FF8A75}
+</style>
+</head>
+<body>
+<div class="v">
+
+<div class="loader" aria-hidden="true">
+<div class="ld-stage">
+<div class="ld-ring"></div>
+<svg class="ic1" viewBox="0 0 64 64"><circle cx="32" cy="22" r="10"></circle><path d="M14 54c2-11 9-17 18-17s16 6 18 17"></path></svg>
+<svg class="ic2" viewBox="0 0 64 64"><rect x="8" y="20" width="36" height="26" rx="4"></rect><path d="M44 28l12-7v22l-12-7"></path><circle class="lens" cx="26" cy="33" r="7" pathLength="100"></circle><circle cx="14" cy="15" r="2.5" fill="#FF4A2E" stroke="#FF4A2E"></circle></svg>
+<svg class="ic3" viewBox="0 0 64 64"><rect x="8" y="14" width="48" height="36" rx="5"></rect><path class="tri" d="M27 24l13 8-13 8z"></path><path d="M8 56h48"></path></svg>
+</div>
+<div class="ld-words mono"><span>Votre client</span><span>Filmé chez lui</span><span>Diffusé partout</span></div>
+<div class="ld-bar"></div>
+<div class="ld-tc mono"><span><span class="dot"></span>REC</span><span>AWIMA · Témoignages vidéo</span></div>
+</div>
+
+<div class="w hd">
+<a class="id" href="#top"><img src="assets/adelin.jpg" alt="Adelin Hugot"><div><b>Adelin Hugot</b><span class="mono">AWIMA · témoignages vidéo</span></div></a>
+<nav><a class="l" href="#videos">Les vidéos</a><a class="l" href="#moi">Qui je suis</a><a class="l" href="#tarifs">Tarifs</a><a class="btn p" href="#contact">Ça m'intéresse</a></nav>
+</div>
+
+<section id="top" class="w hero">
+<div class="hl">
+<p class="mono hi"><span class="dot"></span>Salut, moi c'est Adelin.</p>
+<h1 class="big"><span class="ln"><span>Je filme vos clients contents</span></span><span class="ln"><span><em>de votre travail</em> 😉</span></span></h1>
+<div class="side">
+<p class="sub">Vous me transmettez les coordonnées des clients que vous savez heureux de vos services puis je m'occupe de tout. Je les contacte, conviens d'un rendez-vous avec eux, filme leur retour, réalise le montage et vous le transmet. Vous pourrez exploiter ce contenu comme bon vous semble.</p>
+<div class="ctas"><a class="btn p" href="#contact">On s'appelle 20 min ?</a><a class="btn g" href="#videos">Voir les vidéos</a></div>
+</div>
+</div>
+<div class="vf">
+<img src="assets/tournage.jpg" alt="Adelin en tournage chez un client">
+<span class="cn t1"></span><span class="cn t2"></span><span class="cn t3"></span><span class="cn t4"></span>
+<div class="os mono"><span><span class="dot"></span>REC</span><span>00:00:12:04</span></div>
+</div>
+</section>
+
+<section class="film">
+<div class="w">
+<p class="mono" style="margin: 16px 0 0" data-r="up">Un tournage, en vrai comment ça se passe ? :</p>
+<div class="frames">
+<figure><img src="assets/micro.jpg" alt="Pose d'un micro-cravate au col d'un client" data-r="dev"><figcaption><span class="mono">12A</span><span>On équipe votre client d'un micro à réduction de bruit</span></figcaption></figure>
+<figure><img src="assets/rire.jpg" alt="Un client qui éclate de rire pendant le tournage" data-r="dev"><figcaption><span class="mono">14A</span><span>On obtient le témoignage le plus naturel possible</span></figcaption></figure>
+</div>
+</div>
+</section>
+
+<section id="vision" class="sec pin" data-pin="">
+<div class="stick">
+<div class="w">
+<div class="tag mono"><span>Ma façon de voir les choses</span><span>01</span></div>
+<div class="vgrid">
+<div class="vtxt scene sA">
+<h2 class="big"><span class="fill">Vos clients contents sont votre meilleure pub. Le problème, c'est que personne ne les entend.</span></h2>
+<p>Quand vous terminez un chantier, votre client est ravi. Il vous le dit, il en parle autour de lui… et ça s'arrête là. Sa satisfaction reste dans son salon.</p>
+<p>Des photos de réalisations, tout le monde en a. Des pubs fabriquées par l'IA, on en voit passer toute la journée. Ce qui manque, c'est <strong>une vraie personne, chez elle, qui raconte avec ses mots pourquoi elle est contente de vous.</strong> Ça, on y croit.</p>
+</div>
+<div class="scene sB">
+<div class="meters">
+<p class="mono" style="margin: 0">Jusqu'où va le « merci » de votre client ?</p>
+<div class="m m1"><div class="row"><b>Il en parle à un proche</b><span class="mono">1 personne</span></div><div class="track"><div class="lvl" style="width: 12%"></div></div></div>
+<div class="m m2"><div class="row"><b>Il laisse un avis Google</b><span class="mono">quelques lecteurs</span></div><div class="track"><div class="lvl" style="width: 34%"></div></div></div>
+<div class="m m3 hot"><div class="row"><b>Il le dit face caméra, chez lui</b><span class="mono">des milliers de voisins</span></div><div class="track"><div class="lvl" style="width: 100%"></div></div></div>
+<p class="note">En local, on reconnaît la maison, le quartier, parfois même la personne. C'est du bouche-à-oreille, en beaucoup plus grand.</p>
+</div>
+</div>
+<div class="scene sC">
+<p class="big pull">Mon métier : sortir la satisfaction de vos clients <span>de leur salon</span> pour la montrer au plus grand nombre.</p>
+</div>
+</div>
+<div class="prog"></div>
+</div>
+</div>
+</section>
+
+<section id="videos" class="sec">
+<div class="w">
+<div class="tag mono"><span>Ce qu'ils disent</span><span>02</span></div>
+<h2 class="big h2" data-r="mask">Ce qu'ils disent, filmés chez eux.</h2>
+<p class="lead" data-r="up">Aucun texte appris, le naturel ça ne s'apprend pas.</p>
+<div class="vrow" style="margin-top: 56px" data-r="rise">
+<figure>
+<video src="assets/bonin.mp4" poster="assets/bonin.jpg" controls="" playsinline="" preload="none"></video>
+<p class="q"><span class="sub-t">« Nous avons économisé 1 500 € sur l'année. »</span></p>
+<p class="who mono" style="margin: 0">M. Bonin · client Rhône Solaire Pro</p>
+</figure>
+<figure>
+<video src="assets/chouvy.mp4" poster="assets/chouvy.jpg" controls="" playsinline="" preload="none"></video>
+<p class="q"><span class="sub-t">« Rapidité, efficacité, ponctualité. »</span></p>
+<p class="who mono" style="margin: 0">M. Chouvy · client Rhône Solaire Pro</p>
+</figure>
+<div class="vside">
+<p class="big">Tournés chez eux, devant leur installation.</p>
+<p>Pas de prompteur, pas de texte. Je pose quelques questions, ils racontent. Au montage, je garde ce qui sonne vrai et ce qui peut plaire à vos nouveaux clients.</p>
+</div>
+</div>
+<h3 class="big h3" data-r="mask">D'autres tournages</h3>
+<div class="vsm" data-r="rise">
+<figure><video src="assets/arti1.mp4" poster="assets/arti1.jpg" controls="" playsinline="" preload="none"></video><figcaption class="mono"><b>Artisolaire</b> · Centre-Val de Loire</figcaption></figure>
+<figure><video src="assets/afa1.mp4" poster="assets/afa1.jpg" controls="" playsinline="" preload="none"></video><figcaption class="mono"><b>AFA Solar</b> · installateur solaire</figcaption></figure>
+<figure><video src="assets/arti2.mp4" poster="assets/arti2.jpg" controls="" playsinline="" preload="none"></video><figcaption class="mono"><b>Artisolaire</b> · Centre-Val de Loire</figcaption></figure>
+<figure><video src="assets/afa2.mp4" poster="assets/afa2.jpg" controls="" playsinline="" preload="none"></video><figcaption class="mono"><b>AFA Solar</b> · installateur solaire</figcaption></figure>
+</div>
+</div>
+</section>
+
+<section id="moi" class="sec">
+<div class="w">
+<div class="tag mono"><span>Qui je suis</span><span>03</span></div>
+<div class="moi">
+<div class="ph"><img src="assets/adelin.jpg" alt="Adelin Hugot" data-r="dev"><span class="mono">Adelin · Vienne</span></div>
+<div class="tx">
+<h2 class="big" data-r="mask">Pas une agence de 15 personnes. Juste moi, ma caméra, et votre client.</h2>
+<p data-r="up">J'ai commencé à filmer des clients chez Rhône Solaire Pro, un installateur de la région où je m'occupe du marketing. Des propriétaires qui ont investi chez eux, exactement comme les vôtres.</p>
+<p data-r="up">Ça fait des années que je tourne des témoignages, et c'est la partie de mon travail que je préfère : arriver chez quelqu'un qui est un peu stressé par la caméra, et repartir avec une vidéo où il parle de son projet comme à un voisin.</p>
+<div class="stats" data-r="up">
+<div class="st"><span class="mono"><i>●</i>Demandes de devis</span><b data-count="975">975</b><span class="mono" style="display: block; margin-top: 12px">générées par des pubs avec des clients à l'image</span></div>
+<div class="st"><span class="mono"><i>●</i>Part des leads</span><b>1<small style="margin: 0 .15em">/</small>3</b><span class="mono" style="display: block; margin-top: 12px">des leads de RSP viennent de ces vidéos</span></div>
+<div class="st"><span class="mono"><i>●</i>Une seule vidéo</span><b>4,3<small style="margin-left: .2em">M</small></b><span class="mono" style="display: block; margin-top: 12px">impressions et 781 leads à elle seule</span></div>
+</div>
+<p class="mono src">Source : Meta Ads Rhône Solaire Pro, sept. 2024 – nov. 2026</p>
+<p class="sig">— Adelin</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="sec pin steps" data-pin="" data-steps="">
+<div class="stick">
+<div class="w">
+<div class="tag mono" style="position: relative; top: auto; left: auto; right: auto"><span>Le déroulé</span><span>04</span></div>
+<h2 class="big h2" style="margin-bottom: 56px">Ce que vous avez à faire : m'envoyer un numéro.</h2>
+<div class="tl">
+<div class="head"></div>
+<div class="clip"><div class="bar"></div><span class="mono">D'abord · 00:00</span><b>Vous m'envoyez un contact</b><p>Un nom et un numéro d'un client content, par SMS. C'est tout.</p></div>
+<div class="clip"><div class="bar"></div><span class="mono">Ensuite · 00:01</span><b>Je l'appelle et je viens</b><p>Je lui explique, on cale un créneau chez lui. Sur place, on discute de son projet devant votre réalisation.</p></div>
+<div class="clip"><div class="bar"></div><span class="mono">Enfin · 00:02</span><b>Vous recevez les vidéos</b><p>Montées, sous-titrées, déclinées pour votre site, Reels, TikTok et la pub.</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="tarifs" class="sec">
+<div class="w">
+<div class="tag mono"><span>Tarifs</span><span>05</span></div>
+<h2 class="big h2" data-r="mask">Les tarifs, sans détour.</h2>
+<p class="lead" style="margin-bottom: 56px" data-r="up">Plus vous filmez, moins chaque vidéo vous coûte.</p>
+<div class="offers" data-r="rise">
+<div class="of"><span class="mono">Pour tester, sans engagement</span><div class="n">À l'unité</div><p>1 témoignage tourné et monté, 2 formats courts pour les réseaux, sous-titres. Déduit du pack si vous continuez.</p><div class="px">790 € <small>HT</small></div></div>
+<div class="of"><span class="mono">Environ 663 € la vidéo</span><div class="n">Le pack 3</div><p>3 témoignages, chacun décliné en 4 à 5 formats courts, plus une version prête pour la pub.</p><div class="px">1 990 € <small>HT</small></div></div>
+<div class="of hl"><span class="mono">Engagement 6 mois · le moins cher à la vidéo</span><div class="n">Tous les mois</div><p>1 témoignage par mois avec tous ses formats. En option : publication sur vos réseaux et gestion de la pub Meta et Google.</p><div class="px">590 € <small>HT / mois</small></div></div>
+</div>
+</div>
+</section>
+
+<section class="sec">
+<div class="w faq">
+<div class="tag mono"><span>Questions</span><span>06</span></div>
+<h2 class="big h2" style="margin-bottom: 32px" data-r="mask">Les questions qu'on me pose.</h2>
+<div data-r="rise">
+<details><summary><span class="mono">Q.1</span>Mon client va être mal à l'aise devant la caméra.</summary><p>Presque tout le monde l'est au début. Je ne fais rien réciter : on parle de son projet, et au bout de quelques minutes il oublie la caméra. Au montage, je garde les meilleurs moments.</p></details>
+<details><summary><span class="mono">Q.2</span>Combien de temps ça me prend ?</summary><p>Le temps d'envoyer un SMS avec un contact. Je m'occupe de tout le reste.</p></details>
+<details><summary><span class="mono">Q.3</span>Je peux utiliser les vidéos en pub ?</summary><p>Oui, chaque témoignage est livré avec un format pensé pour la pub. Je peux aussi gérer la diffusion pour vous.</p></details>
+<details><summary><span class="mono">Q.4</span>Vous venez jusqu'où ?</summary><p>Je suis à Vienne. Je me déplace dans la région lyonnaise, le Nord-Isère et autour.</p></details>
+</div>
+</div>
+</section>
+
+<section id="contact" class="sec">
+<div class="w ct">
+<div class="l">
+<p class="mono" style="margin: 0 0 18px"><span class="dot"></span>À vous</p>
+<h2 class="big" data-r="mask">Le plus simple : laissez-moi vos infos je vous rappelle</h2>
+<p data-r="up">Laissez votre numéro, je vous rappelle dans la journée. On regarde ensemble quels clients filmer en premier.</p>
+<p><a href="mailto:adelin@awima.fr">adelin@awima.fr</a></p>
+</div>
+<form id="lead" data-r="up" novalidate>
+<label class="mono">Votre prénom<input type="text" name="prenom" autocomplete="given-name" required></label>
+<label class="mono">Téléphone<input type="tel" name="telephone" autocomplete="tel" required></label>
+<label class="mono">Votre métier<select name="metier"><option>Cuisiniste</option><option>Poêlier / cheminée</option><option>Menuisier</option><option>Salle de bain</option><option>Rénovation</option><option>Autre</option></select></label>
+<label class="hp" aria-hidden="true">Ne pas remplir<input type="text" name="site" tabindex="-1" autocomplete="off"></label>
+<button class="btn p" type="submit">Rappelez-moi</button>
+<p class="msg" id="msg" role="status" aria-live="polite"></p>
+</form>
+</div>
+</section>
+
+<div class="w ft mono"><span>© 2026 Adelin Hugot · AWIMA · Vienne · SIRET 881 086 714 00014</span><a href="mailto:adelin@awima.fr">adelin@awima.fr</a></div>
+
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  (function () {
+    var root = document.querySelector('.v');
+    if (!root) return;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var scrollable = document.documentElement.scrollHeight > window.innerHeight * 1.6;
+    if (reduce || !scrollable) return;
+    root.classList.add('anim');
+    var de = document.documentElement;
+    de.style.overflow = 'hidden';
+    var self = this;
+    this.t1 = setTimeout(function () { root.classList.add('ready'); de.style.overflow = ''; }, 2900);
+
+    var groups = new Map();
+    this.io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        (groups.get(e.target) || []).forEach(function (x) { x.classList.add('in'); });
+        self.io.unobserve(e.target);
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -15% 0px' });
+    root.querySelectorAll('[data-r]').forEach(function (el) {
+      var t = el.parentElement;
+      if (!groups.has(t)) { groups.set(t, []); self.io.observe(t); }
+      groups.get(t).push(el);
+    });
+
+    this.cio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        self.cio.unobserve(e.target);
+        var el = e.target, end = parseInt(el.getAttribute('data-count'), 10), t0 = null;
+        var step = function (ts) {
+          if (!t0) t0 = ts;
+          var k = Math.min(1, (ts - t0) / 1600);
+          el.textContent = Math.round(end * (1 - Math.pow(1 - k, 3)));
+          if (k < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      });
+    }, { threshold: 0.6 });
+    root.querySelectorAll('[data-count]').forEach(function (el) { el.textContent = '0'; self.cio.observe(el); });
+
+    var pins = Array.prototype.slice.call(root.querySelectorAll('[data-pin]'));
+    this.onScroll = function () {
+      pins.forEach(function (s) {
+        var r = s.getBoundingClientRect();
+        var p = Math.min(1, Math.max(0, -r.top / (r.height - window.innerHeight)));
+        s.style.setProperty('--p', p.toFixed(4));
+        if (s.hasAttribute('data-steps')) {
+          var clips = s.querySelectorAll('.clip');
+          clips.forEach(function (c, i) { c.classList.toggle('on', p > 0.05 + i * 0.3); });
+        }
+      });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('resize', this.onScroll);
+    this.onScroll();
+  }).call({});
+});
+(function(){
+  var qs=new URLSearchParams(location.search),p=(qs.get('p')||'').toLowerCase();
+  window.AWIMA_P=p;
+  if(!p)return;
+  try{
+    var k='awima_seen_'+p;
+    if(sessionStorage.getItem(k))return;
+    sessionStorage.setItem(k,'1');
+  }catch(e){}
+  fetch('https://n8n.srv1203276.hstgr.cloud/webhook/lp-visite',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({p:p,src:qs.get('src')||'lien',ref:document.referrer})}).catch(function(){});
+})();
+(function(){
+  var f=document.getElementById('lead'),m=document.getElementById('msg');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var d={prenom:f.prenom.value.trim(),telephone:f.telephone.value.trim(),metier:f.metier.value,site:f.site.value,prospect:window.AWIMA_P||''};
+    if(!d.prenom||d.telephone.replace(/\D/g,'').length<9){m.className='msg err';m.textContent='Indiquez votre prénom et un numéro de téléphone valide.';return;}
+    var b=f.querySelector('button');b.disabled=true;b.textContent='Envoi…';
+    fetch('/.netlify/functions/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
+      .then(function(r){if(!r.ok)throw 0;f.reset();m.className='msg ok';m.textContent='Merci ! Je vous rappelle dans la journée.';b.textContent='Envoyé';})
+      .catch(function(){m.className='msg err';m.innerHTML='Oups, l’envoi n’a pas marché. Appelez-moi au <a href="tel:+33672732315">06 72 73 23 15</a>.';b.disabled=false;b.textContent='Rappelez-moi';});
+  });
+})();
+</script>
+</body>
 </html>
