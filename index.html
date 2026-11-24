@@ -523,7 +523,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if(sessionStorage.getItem(k))return;
     sessionStorage.setItem(k,'1');
   }catch(e){}
-  fetch('https://n8n.srv1203276.hstgr.cloud/webhook/lp-visite',{method:'POST',headers:{'Content-Type':'application/json'},
+  fetch('/.netlify/functions/visit',{method:'POST',headers:{'Content-Type':'application/json'},keepalive:true,
     body:JSON.stringify({p:p,src:qs.get('src')||'lien',ref:document.referrer})}).catch(function(){});
 })();
 (function(){
